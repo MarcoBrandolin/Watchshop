@@ -1,4 +1,6 @@
-package ch.bzz.watchshop.model;
+package model;
+
+import model.Hersteller;
 
 public class Uhr {
     private String uhrUUID;
