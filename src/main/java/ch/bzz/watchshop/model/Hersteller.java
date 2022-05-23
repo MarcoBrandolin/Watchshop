@@ -1,4 +1,4 @@
-package model;
+package ch.bzz.watchshop.model;
 
 import java.util.List;
 
@@ -14,22 +14,6 @@ public class Hersteller {
 
     public void setHerstellerUUID(String herstellerUUID) {
         this.herstellerUUID = herstellerUUID;
-    }
-
-    public String getHerstellerName() {
-        return herstellerName;
-    }
-
-    public void setHerstellerName(String herstellerName) {
-        this.herstellerName = herstellerName;
-    }
-
-    public String getHerkunft() {
-        return herkunft;
-    }
-
-    public void setHerkunft(String herkunft) {
-        this.herkunft = herkunft;
     }
 
     public List<Uhr> getUhrenliste() {

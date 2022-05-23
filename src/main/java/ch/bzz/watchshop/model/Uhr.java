@@ -1,6 +1,4 @@
-package model;
-
-import model.Hersteller;
+package ch.bzz.watchshop.model;
 
 public class Uhr {
     private String uhrUUID;
@@ -25,11 +23,11 @@ public class Uhr {
         this.modelName = modelName;
     }
 
-    public Hersteller getHersteller() {
+    public ch.bzz.watchshop.model.Hersteller getHersteller() {
         return hersteller;
     }
 
-    public void setHersteller(Hersteller hersteller) {
+    public void setHersteller(ch.bzz.watchshop.model.Hersteller hersteller) {
         this.hersteller = hersteller;
     }
 
