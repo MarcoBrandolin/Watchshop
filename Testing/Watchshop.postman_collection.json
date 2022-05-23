@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "6fdb1db6-afa7-4ff8-8d37-d45ca4968ae1",
+		"name": "Watchshop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0.1 Testservice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Uhren",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Hersteller",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong URL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhren/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhren",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Uhren by UUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=e7ac5010-73cf-4be4-bc47-414af51cd6e2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"read"
+					],
+					"query": [
+						{
+							"key": "UUID",
+							"value": "e7ac5010-73cf-4be4-bc47-414af51cd6e2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hersteller by UUID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/read?UUID=d13664cc-e0c7-43f1-8350-41db822c7872",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"read"
+					],
+					"query": [
+						{
+							"key": "UUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UhrenUUID out of range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=e7ac5010-73cf-4be4-bc47-414af51cd6e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"read"
+					],
+					"query": [
+						{
+							"key": "UUID",
+							"value": "e7ac5010-73cf-4be4-bc47-414af51cd6e5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HerstellerUUID out of range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/read?UUID=b6ac5010-73cf-4be4-bc47-414af51cd6e2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"read"
+					],
+					"query": [
+						{
+							"key": "UUID",
+							"value": "b6ac5010-73cf-4be4-bc47-414af51cd6e2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

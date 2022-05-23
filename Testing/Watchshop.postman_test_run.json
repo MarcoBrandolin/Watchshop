@@ -1,0 +1,172 @@
+{
+	"id": "273e96fc-e03e-485f-950f-a5153e65e0cf",
+	"name": "Watchshop",
+	"timestamp": "2022-05-23T21:11:22.342Z",
+	"collection_id": "6fdb1db6-afa7-4ff8-8d37-d45ca4968ae1",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9c6a4caa-2877-4d44-89df-d78a32f2ca8e",
+			"name": "All Uhren",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/list",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "02893f98-2541-4e70-96e9-bae8c1e1d674",
+			"name": "All Hersteller",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/list",
+			"time": 26,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				26
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "88439aae-a7f1-4631-b5fd-8f90acb4751c",
+			"name": "Wrong URL",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhren/list",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fb51fc0f-6508-4693-bb77-00bddb12bb43",
+			"name": "Uhren by UUID",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=e7ac5010-73cf-4be4-bc47-414af51cd6e2",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8a13beb1-0bd0-46b9-9959-42c966de5b26",
+			"name": "Hersteller by UUID",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/read?UUID=d13664cc-e0c7-43f1-8350-41db822c7872",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b4423fc1-8a6a-4c8b-b416-745b8b9ac5e9",
+			"name": "UhrenUUID out of range",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=e7ac5010-73cf-4be4-bc47-414af51cd6e5",
+			"time": 27,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				27
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7caddb31-896c-4ef8-974e-40bc6958ae9c",
+			"name": "HerstellerUUID out of range",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/read?UUID=b6ac5010-73cf-4be4-bc47-414af51cd6e2",
+			"time": 20,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 106,
+	"collection": {
+		"requests": [
+			{
+				"id": "9c6a4caa-2877-4d44-89df-d78a32f2ca8e",
+				"method": "GET"
+			},
+			{
+				"id": "02893f98-2541-4e70-96e9-bae8c1e1d674",
+				"method": "GET"
+			},
+			{
+				"id": "88439aae-a7f1-4631-b5fd-8f90acb4751c",
+				"method": "GET"
+			},
+			{
+				"id": "fb51fc0f-6508-4693-bb77-00bddb12bb43",
+				"method": "GET"
+			},
+			{
+				"id": "8a13beb1-0bd0-46b9-9959-42c966de5b26",
+				"method": "GET"
+			},
+			{
+				"id": "b4423fc1-8a6a-4c8b-b416-745b8b9ac5e9",
+				"method": "GET"
+			},
+			{
+				"id": "7caddb31-896c-4ef8-974e-40bc6958ae9c",
+				"method": "GET"
+			}
+		]
+	}
+}
