@@ -28,7 +28,7 @@ public class UhrService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
 
-    public Response uhrrList() {
+    public Response uhrList() {
         List<Uhr> uhrList = DataHandler.getInstance().readAllUhren();
         return Response
                 .status(200)

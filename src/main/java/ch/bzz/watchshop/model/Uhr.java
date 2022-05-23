@@ -1,11 +1,14 @@
 package ch.bzz.watchshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Uhr {
     private String uhrUUID;
     private String modelName;
-    private Hersteller hersteller;
     private double preis;
     private String material;
+    @JsonIgnore
+    private Hersteller hersteller;
 
     public String getUhrUUID() {
         return uhrUUID;
@@ -23,14 +26,6 @@ public class Uhr {
         this.modelName = modelName;
     }
 
-    public ch.bzz.watchshop.model.Hersteller getHersteller() {
-        return hersteller;
-    }
-
-    public void setHersteller(ch.bzz.watchshop.model.Hersteller hersteller) {
-        this.hersteller = hersteller;
-    }
-
     public double getPreis() {
         return preis;
     }
@@ -45,5 +40,13 @@ public class Uhr {
 
     public void setMaterial(String material) {
         this.material = material;
+    }
+
+    public Hersteller getHersteller() {
+        return hersteller;
+    }
+
+    public void setHersteller(Hersteller hersteller) {
+        this.hersteller = hersteller;
     }
 }
