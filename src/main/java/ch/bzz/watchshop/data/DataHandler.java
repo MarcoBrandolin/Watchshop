@@ -74,6 +74,17 @@ public class DataHandler {
         return getHerstellerList();
     }
 
+    public Boolean deleteUhr(String uhrUUID) {
+        Uhr uhr = readUhrByUUID(uhrUUID);
+        if (uhr != null) {
+            getUhrList().remove(uhr);
+            writeUhrJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * reads a publisher by its uuid
      * @param herstellerUUID
