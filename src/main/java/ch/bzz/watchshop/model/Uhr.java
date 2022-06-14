@@ -2,6 +2,7 @@ package ch.bzz.watchshop.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 public class Uhr {
     private String uhrUUID;
     private String modelName;
