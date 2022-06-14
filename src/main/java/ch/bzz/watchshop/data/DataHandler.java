@@ -78,7 +78,7 @@ public class DataHandler {
         Uhr uhr = readUhrByUUID(uhrUUID);
         if (uhr != null) {
             getUhrList().remove(uhr);
-            writeUhrJSON();
+            //writeUhrJSON();
             return true;
         } else {
             return false;
