@@ -48,6 +48,58 @@ public class UhrService {
                 .build();
     }
 
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertUhr(
+            @FormParam("modelName") String modelName,
+            @FormParam("preis") double preis,
+            @FormParam("material") String material,
+            @FormParam("herstellerUUID") String herstellerUUID
+    ) {
+        Uhr uhr = new Uhr();
+        uhr.setUhrUUID(UUID.randomUUID().toString());
+        uhr.setModelName(modelName);
+        uhr.setPreis(preis);
+        uhr.setMaterial(material);
+        uhr.setHerstellerbyUUID(herstellerUUID);
+
+        DataHandler.insertUhr(uhr);
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateUhr(
+            @FormParam("uhrUUID") String uhrUUID,
+            @FormParam("modelName") String modelName,
+            @FormParam("preis") Double preis,
+            @FormParam("material") String material,
+            @FormParam("herstellerUUID") String herstellerUUID
+    ) {
+        int httpStatus = 200;
+        Uhr uhr = DataHandler.readUhrByUUID(uhrUUID);
+        if (uhr != null) {
+            uhr.setUhrUUID(uhrUUID);
+            uhr.setModelName(modelName);
+            uhr.setPreis(preis);
+            uhr.setMaterial(material);
+            uhr.setHerstellerbyUUID(herstellerUUID);
+
+            DataHandler.updateUhr();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
@@ -62,6 +114,20 @@ public class UhrService {
                 .status(httpStatus)
                 .entity("")
                 .build();
+    }
+    private void setAttributes(
+            Uhr uhr,
+            String modelName,
+            double preis,
+            String material,
+            String herstellerUUID
+
+    ) {
+        uhr.setModelName(modelName);
+        uhr.setPreis(preis);
+        uhr.setMaterial(material);
+        uhr.setHerstellerbyUUID(herstellerUUID);
+
     }
 
 }

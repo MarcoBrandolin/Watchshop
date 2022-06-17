@@ -1,5 +1,6 @@
 package ch.bzz.watchshop.model;
 
+import ch.bzz.watchshop.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -49,5 +50,22 @@ public class Uhr {
 
     public void setHersteller(Hersteller hersteller) {
         this.hersteller = hersteller;
+    }
+
+    public String getHerstellerUUID() {
+        if (getHersteller()== null) return null;
+        return getHersteller().getHerstellerUUID();
+    }
+
+    /**
+     * creates a Hersteller-object without the uhrlist
+     * @param herstellerUUID the key
+     */
+    public void setHerstellerbyUUID(String herstellerUUID) {
+        setHersteller(new Hersteller());
+        Hersteller hersteller = DataHandler.readHerstellerByUUID(herstellerUUID);
+        getHersteller().setHerstellerUUID(herstellerUUID);
+        getHersteller().setHerstellerName(hersteller.getHerstellerName());
+        getHersteller().setHerkunft(hersteller.getHerkunft());
     }
 }

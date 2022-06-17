@@ -3,11 +3,9 @@ package ch.bzz.watchshop.service;
 
 import ch.bzz.watchshop.data.DataHandler;
 import ch.bzz.watchshop.model.Hersteller;
+import ch.bzz.watchshop.model.Uhr;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -49,6 +47,82 @@ public class HerstellerService {
                 .status(httpStatus)
                 .entity(hersteller)
                 .build();
+    }
+
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertHersteller(
+            @FormParam("herstellerName") String herstellerName,
+            @FormParam("herkunft") String herkunft
+
+    ) {
+        Hersteller hersteller = new Hersteller();
+        hersteller.setHerstellerUUID(UUID.randomUUID().toString());
+        hersteller.setHerstellerName(herstellerName);
+        hersteller.setHerkunft(herkunft);
+
+
+        DataHandler.insertHersteller(hersteller);
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateHersteller(
+            @FormParam("herstellerUUID") String herstellerUUID,
+            @FormParam("herstellerName") String herstellerName,
+            @FormParam("herkunft") String herkunft
+
+    ) {
+        int httpStatus = 200;
+        Hersteller hersteller = DataHandler.readHerstellerByUUID(herstellerUUID);
+        if (hersteller != null) {
+            hersteller.setHerstellerName(herstellerName);
+            hersteller.setHerkunft(herkunft);
+
+            DataHandler.updateUhr();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteHersteller(
+            @QueryParam("uuid") String herstellerUUID
+    ) {
+        int httpStatus = 200;
+        if (!DataHandler.deleteHersteller(herstellerUUID)) {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+    private void setAttributes(
+            Uhr uhr,
+            String modelName,
+            double preis,
+            String material,
+            String herstellerUUID
+
+    ) {
+        uhr.setModelName(modelName);
+        uhr.setPreis(preis);
+        uhr.setMaterial(material);
+        uhr.setHerstellerbyUUID(herstellerUUID);
+
     }
 
 }

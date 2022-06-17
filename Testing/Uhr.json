@@ -1,14 +1,19 @@
-[ 
-    {
-     "uhrUUID" : "608a1471-d5bb-4ea7-a706-7117faa82582",
-     "modelName" : "Royal Oak",
-     "preis" : 214000.00,
-     "material" : "Gelbgold"
-    },
-    {
-    "uhrUUID" : "e7ac5010-73cf-4be4-bc47-414af51cd6e2",
-    "modelName" : "Day Date",
-    "preis" : 72000.0,
-    "material" : "Platin"
-    } 
-]
+[ {
+  "uhrUUID" : "608a1471-d5bb-4ea7-a706-7117faa82582",
+  "modelName" : "Royal Oak",
+  "preis" : 214000.0,
+  "material" : "Gelbgold",
+  "herstellerUUID" : null
+}, {
+  "uhrUUID" : "e7ac5010-73cf-4be4-bc47-414af51cd6e2",
+  "modelName" : "Day Date",
+  "preis" : 72000.0,
+  "material" : "Platin",
+  "herstellerUUID" : null
+}, {
+  "uhrUUID" : "ce30f7c6-f8e4-4e36-8be8-d7a5c49ad81f",
+  "modelName" : "Datejust",
+  "preis" : 12000.0,
+  "material" : "Edelstahl",
+  "herstellerUUID" : "d13664cc-e0c7-43f1-8350-41db822c7872"
+} ]
