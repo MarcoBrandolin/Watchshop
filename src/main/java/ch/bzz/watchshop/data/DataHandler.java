@@ -4,49 +4,42 @@ import ch.bzz.watchshop.model.Uhr;
 import ch.bzz.watchshop.model.Hersteller;
 import ch.bzz.watchshop.service.Config;
 
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * reads and writes the data in the JSON-files
  */
-public class DataHandler {
-    private static DataHandler instance = null;
-    private List<Uhr> uhrList;
-    private List<Hersteller> herstellerList;
+public final class DataHandler {
+    private static List<Uhr> uhrList;
+    private static List<Hersteller> herstellerList;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler() {
-        setHerstellerList(new ArrayList<>());
-        readHerstellerJSON();
-        setUhrList(new ArrayList<>());
-        readUhrJSON();
     }
 
     /**
-     * gets the only instance of this class
-     * @return
+     * initializes the lists
      */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
+    public static void initLists() {
+        DataHandler.setUhrList(null);
+        DataHandler.setHerstellerList(null);
     }
-
-
     /**
      * reads all books
      * @return list of books
      */
-    public List<Uhr> readAllUhren() {
+    public static List<Uhr> readAllUhren() {
         return getUhrList();
     }
 
@@ -55,7 +48,7 @@ public class DataHandler {
      * @param uhrUUID
      * @return the Book (null=not found)
      */
-    public Uhr readUhrByUUID(String uhrUUID) {
+    public static Uhr readUhrByUUID(String uhrUUID) {
         Uhr uhr = null;
         for (Uhr entry : getUhrList()) {
             if (entry.getUhrUUID().equals(uhrUUID)) {
@@ -66,19 +59,32 @@ public class DataHandler {
     }
 
     /**
-     * reads all Publishers
-     * @return list of publishers
+     * inserts a new book into the bookList
+     *
+     * @param uhr the book to be saved
      */
-    public List<Hersteller> readAllHersteller() {
-
-        return getHerstellerList();
+    public static void insertUhr(Uhr uhr) {
+        getUhrList().add(uhr);
+        writeUhrJSON();
     }
 
-    public Boolean deleteUhr(String uhrUUID) {
+    /**
+     * updates the bookList
+     */
+    public static void updateUhr() {
+        writeUhrJSON();
+    }
+
+    /**
+     * deletes a book identified by the bookUUID
+     * @param uhrUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteUhr(String uhrUUID) {
         Uhr uhr = readUhrByUUID(uhrUUID);
         if (uhr != null) {
             getUhrList().remove(uhr);
-            //writeUhrJSON();
+            writeUhrJSON();
             return true;
         } else {
             return false;
@@ -86,11 +92,19 @@ public class DataHandler {
     }
 
     /**
+     * reads all publishers
+     * @return list of books
+     */
+    public static List<Hersteller> readAllHerstellers() {
+        return getHerstellerList();
+    }
+
+    /**
      * reads a publisher by its uuid
      * @param herstellerUUID
      * @return the Publisher (null=not found)
      */
-    public Hersteller readHerstellerByUUID(String herstellerUUID) {
+    public static Hersteller readHerstellerByUUID(String herstellerUUID) {
         Hersteller hersteller = null;
         for (Hersteller entry : getHerstellerList()) {
             if (entry.getHerstellerUUID().equals(herstellerUUID)) {
@@ -101,9 +115,42 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new publisher into the bookList
+     *
+     * @param hersteller the publisher to be saved
+     */
+    public static void insertHersteller(Hersteller hersteller) {
+        getHerstellerList().add(hersteller);
+        writeHerstellerJSON();
+    }
+
+    /**
+     * updates the publisherList
+     */
+    public static void updateHersteller() {
+        writeHerstellerJSON();
+    }
+
+    /**
+     * deletes a publisher identified by the publisherUUID
+     * @param herstellerUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteHersteller(String herstellerUUID) {
+        Hersteller hersteller = readHerstellerByUUID(herstellerUUID);
+        if (hersteller != null) {
+            getHerstellerList().remove(hersteller);
+            writeHerstellerJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * reads the books from the JSON-file
      */
-    private void readUhrJSON() {
+    private static void readUhrJSON() {
         try {
             String path = Config.getProperty("UhrJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -120,9 +167,28 @@ public class DataHandler {
     }
 
     /**
+     * writes the bookList to the JSON-file
+     */
+    private static void writeUhrJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String uhrPath = Config.getProperty("UhrJSON");
+        try {
+            fileOutputStream = new FileOutputStream(uhrPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getUhrList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * reads the publishers from the JSON-file
      */
-    private void readHerstellerJSON() {
+    private static void readHerstellerJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -138,12 +204,38 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * writes the publisherList to the JSON-file
+     */
+    private static void writeHerstellerJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String uhrPath = Config.getProperty("HerstellerJSON");
+        try {
+            fileOutputStream = new FileOutputStream(uhrPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getHerstellerList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     /**
      * gets bookList
      *
      * @return value of bookList
      */
-    private List<Uhr> getUhrList() {
+
+    private static List<Uhr> getUhrList() {
+
+        if (uhrList == null) {
+            setUhrList(new ArrayList<>());
+            readUhrJSON();
+        }
         return uhrList;
     }
 
@@ -152,8 +244,9 @@ public class DataHandler {
      *
      * @param uhrList the value to set
      */
-    private void setUhrList(List<Uhr> uhrList) {
-        this.uhrList = uhrList;
+
+    private static void setUhrList(List<Uhr> uhrList) {
+        DataHandler.uhrList = uhrList;
     }
 
     /**
@@ -161,17 +254,24 @@ public class DataHandler {
      *
      * @return value of publisherList
      */
-    private List<Hersteller> getHerstellerList() {
+
+    private static List<Hersteller> getHerstellerList() {
+        if (herstellerList == null) {
+            setHerstellerList(new ArrayList<>());
+            readHerstellerJSON();
+        }
+
         return herstellerList;
     }
 
     /**
      * sets publisherList
      *
-     * @param herstellerList the value to set
+     * @param publisherList the value to set
      */
-    private void setHerstellerList(List<Hersteller> herstellerList) {
-        this.herstellerList = herstellerList;
+
+    private static void setHerstellerList(List<Hersteller> publisherList) {
+        DataHandler.herstellerList = publisherList;
     }
 
 

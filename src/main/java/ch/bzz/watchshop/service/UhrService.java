@@ -26,7 +26,7 @@ public class UhrService {
     @Produces(MediaType.APPLICATION_JSON)
 
     public Response uhrList() {
-        List<Uhr> uhrList = DataHandler.getInstance().readAllUhren();
+        List<Uhr> uhrList = DataHandler.readAllUhren();
         return Response
                 .status(200)
                 .entity(uhrList)
@@ -38,7 +38,7 @@ public class UhrService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readUhr(@QueryParam("UUID") String UUID) {
         int httpStatus = 200;
-        Uhr uhr = DataHandler.getInstance().readUhrByUUID(UUID);
+        Uhr uhr = DataHandler.readUhrByUUID(UUID);
         if (uhr == null) {
             httpStatus = 410;
         }
@@ -55,7 +55,7 @@ public class UhrService {
             @QueryParam("uuid") String uhrUUID
     ) {
         int httpStatus = 200;
-        if (DataHandler.getInstance().deleteUhr(uhrUUID)) {
+        if (!DataHandler.deleteUhr(uhrUUID)) {
             httpStatus = 410;
         }
         return Response
