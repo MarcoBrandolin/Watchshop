@@ -110,19 +110,5 @@ public class HerstellerService {
                 .entity("")
                 .build();
     }
-    private void setAttributes(
-            Uhr uhr,
-            String modelName,
-            double preis,
-            String material,
-            String herstellerUUID
-
-    ) {
-        uhr.setModelName(modelName);
-        uhr.setPreis(preis);
-        uhr.setMaterial(material);
-        uhr.setHerstellerbyUUID(herstellerUUID);
-
-    }
 
 }
