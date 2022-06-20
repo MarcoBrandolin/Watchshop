@@ -2,12 +2,33 @@ package ch.bzz.watchshop.model;
 
 import ch.bzz.watchshop.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.internal.NotNull;
+
+
+import javax.validation.constraints.*;
+import javax.ws.rs.FormParam;
+import java.math.BigDecimal;
 
 
 public class Uhr {
+    @FormParam("uhrUUID")
+    @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String uhrUUID;
+
+    @FormParam("modelName")
+    @NotEmpty
+    @Size(min=2, max=10)
     private String modelName;
-    private double preis;
+
+    @FormParam("preis")
+    @NotNull
+    @DecimalMax(value="1000000.00")
+    @DecimalMin(value="0.05")
+    private BigDecimal preis;
+
+    @FormParam("material")
+    @NotEmpty
+    @Size(min=2, max=10)
     private String material;
     @JsonIgnore
     private Hersteller hersteller;
@@ -28,11 +49,11 @@ public class Uhr {
         this.modelName = modelName;
     }
 
-    public double getPreis() {
+    public BigDecimal getPreis() {
         return preis;
     }
 
-    public void setPreis(double preis) {
+    public void setPreis(BigDecimal preis) {
         this.preis = preis;
     }
 

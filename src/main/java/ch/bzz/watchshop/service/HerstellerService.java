@@ -5,6 +5,9 @@ import ch.bzz.watchshop.data.DataHandler;
 import ch.bzz.watchshop.model.Hersteller;
 import ch.bzz.watchshop.model.Uhr;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -37,7 +40,10 @@ public class HerstellerService {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readHersteller(@QueryParam("UUID") String UUID) {
+    public Response readHersteller(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("UUID") String UUID) {
         int httpStatus = 200;
         Hersteller hersteller = DataHandler.readHerstellerByUUID(UUID);
         if (hersteller == null) {
@@ -53,15 +59,10 @@ public class HerstellerService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertHersteller(
-            @FormParam("herstellerName") String herstellerName,
-            @FormParam("herkunft") String herkunft
+            @Valid @BeanParam Hersteller hersteller
 
     ) {
-        Hersteller hersteller = new Hersteller();
         hersteller.setHerstellerUUID(UUID.randomUUID().toString());
-        hersteller.setHerstellerName(herstellerName);
-        hersteller.setHerkunft(herkunft);
-
 
         DataHandler.insertHersteller(hersteller);
         return Response
@@ -74,16 +75,14 @@ public class HerstellerService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateHersteller(
-            @FormParam("herstellerUUID") String herstellerUUID,
-            @FormParam("herstellerName") String herstellerName,
-            @FormParam("herkunft") String herkunft
+            @Valid @BeanParam Hersteller hersteller
 
     ) {
         int httpStatus = 200;
-        Hersteller hersteller = DataHandler.readHerstellerByUUID(herstellerUUID);
-        if (hersteller != null) {
-            hersteller.setHerstellerName(herstellerName);
-            hersteller.setHerkunft(herkunft);
+        Hersteller alterhersteller = DataHandler.readHerstellerByUUID(hersteller.getHerstellerUUID());
+        if (alterhersteller != null) {
+            alterhersteller.setHerstellerName(hersteller.getHerstellerName());
+            alterhersteller.setHerkunft(hersteller.getHerkunft());
 
             DataHandler.updateUhr();
         } else {
@@ -99,6 +98,8 @@ public class HerstellerService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteHersteller(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String herstellerUUID
     ) {
         int httpStatus = 200;

@@ -4,9 +4,13 @@ package ch.bzz.watchshop.service;
 import ch.bzz.watchshop.data.DataHandler;
 import ch.bzz.watchshop.model.Uhr;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,7 +40,10 @@ public class UhrService {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readUhr(@QueryParam("UUID") String UUID) {
+    public Response readUhr(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("UUID") String UUID) {
         int httpStatus = 200;
         Uhr uhr = DataHandler.readUhrByUUID(UUID);
         if (uhr == null) {
@@ -52,16 +59,12 @@ public class UhrService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertUhr(
-            @FormParam("modelName") String modelName,
-            @FormParam("preis") double preis,
-            @FormParam("material") String material,
+            @Valid @BeanParam Uhr uhr,
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("herstellerUUID") String herstellerUUID
     ) {
-        Uhr uhr = new Uhr();
-        uhr.setUhrUUID(UUID.randomUUID().toString());
-        uhr.setModelName(modelName);
-        uhr.setPreis(preis);
-        uhr.setMaterial(material);
+
         uhr.setHerstellerbyUUID(herstellerUUID);
 
         DataHandler.insertUhr(uhr);
@@ -75,19 +78,17 @@ public class UhrService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateUhr(
-            @FormParam("uhrUUID") String uhrUUID,
-            @FormParam("modelName") String modelName,
-            @FormParam("preis") Double preis,
-            @FormParam("material") String material,
+            @Valid @BeanParam Uhr uhr,
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("herstellerUUID") String herstellerUUID
     ) {
         int httpStatus = 200;
-        Uhr uhr = DataHandler.readUhrByUUID(uhrUUID);
-        if (uhr != null) {
-            uhr.setUhrUUID(uhrUUID);
-            uhr.setModelName(modelName);
-            uhr.setPreis(preis);
-            uhr.setMaterial(material);
+        Uhr alteuhr = DataHandler.readUhrByUUID(uhr.getUhrUUID());
+        if (alteuhr != null) {
+            uhr.setModelName(uhr.getModelName());
+            uhr.setPreis(uhr.getPreis());
+            uhr.setMaterial(uhr.getMaterial());
             uhr.setHerstellerbyUUID(herstellerUUID);
 
             DataHandler.updateUhr();
@@ -104,6 +105,8 @@ public class UhrService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteUhr(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String uhrUUID
     ) {
         int httpStatus = 200;
