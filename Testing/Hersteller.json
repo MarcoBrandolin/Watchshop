@@ -1,13 +1,9 @@
-[
-    {
-     "herstellerUUID" : "b9245a6f-c6ca-46b6-a31b-459d7b440b0d",
-     "herstellerName" : "Audemars Piguet",
-     "herkunft" : "Geneva"
-    },
-    {
-     "herstellerUUID" : "d13664cc-e0c7-43f1-8350-41db822c7872",
-     "herstellerName" : "Rolex",
-     "herkunft" : "Geneva"
-    }
-
-]
+[ {
+  "herstellerUUID" : "d13664cc-e0c7-43f1-8350-41db822c7872",
+  "herstellerName" : "Rolex",
+  "herkunft" : "London"
+}, {
+  "herstellerUUID" : "e5735326-3716-4ccd-afbb-c30a2be19719",
+  "herstellerName" : "Patek Philippe",
+  "herkunft" : "Geneva"
+} ]

@@ -25,6 +25,10 @@ import java.util.UUID;
 public class UhrService {
 
 
+    /**
+     * reads a list of all uhren
+     * @return  uhren as JSON
+     */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -37,6 +41,10 @@ public class UhrService {
                 .build();
     }
 
+    /**
+     * reads a uhr identified by the uuid
+     * @return uhr
+     */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -55,6 +63,11 @@ public class UhrService {
                 .build();
     }
 
+    /**
+     * inserts a new uhr
+     * @param herstellerUUID the uuid of the hersteller
+     * @return Response
+     */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -74,6 +87,11 @@ public class UhrService {
                 .build();
     }
 
+    /**
+     * updates a new uhr
+     * @param herstellerUUID the uuid of the hersteller
+     * @return Response
+     */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
@@ -101,6 +119,11 @@ public class UhrService {
                 .build();
     }
 
+    /**
+     * deletes a uhr identified by its uuid
+     * @param uhrUUID  the key
+     * @return  Response
+     */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)

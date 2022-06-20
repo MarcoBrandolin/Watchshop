@@ -25,6 +25,10 @@ import java.util.UUID;
 public class HerstellerService {
 
 
+    /**
+     * reads a list of all herstellers
+     * @return  hersteller as JSON
+     */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -37,6 +41,11 @@ public class HerstellerService {
                 .build();
     }
 
+    /**
+     * reads a hersteller identified by the uuid
+     *  the key
+     * @return hersteller
+     */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -55,6 +64,11 @@ public class HerstellerService {
                 .build();
     }
 
+    /**
+     * inserts a new hersteller
+     * @param hersteller the name of the hersteller
+     * @return Response
+     */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -71,6 +85,12 @@ public class HerstellerService {
                 .build();
     }
 
+    /**
+     * updates a hersteller
+     *  the key
+     * @param hersteller the name of the hersteller
+     * @return Response
+     */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
@@ -94,6 +114,11 @@ public class HerstellerService {
                 .build();
     }
 
+    /**
+     * deletes a hersteller identified by its uuid
+     *  the key
+     * @return  Response
+     */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
