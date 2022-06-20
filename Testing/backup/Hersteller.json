@@ -1,0 +1,9 @@
+[ {
+  "herstellerUUID" : "d13664cc-e0c7-43f1-8350-41db822c7872",
+  "herstellerName" : "Rolex",
+  "herkunft" : "London"
+}, {
+  "herstellerUUID" : "6b8a64e7-51a8-43fd-8c2f-3dc1171b2c51",
+  "herstellerName" : "Patek Philippe",
+  "herkunft" : "Geneva"
+} ]
