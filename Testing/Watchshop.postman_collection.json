@@ -6,18 +6,23 @@
 	},
 	"item": [
 		{
-			"name": "0.1 Testservice",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "All Uhren",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -39,7 +44,23 @@
 			"response": []
 		},
 		{
-			"name": "All Hersteller",
+			"name": "Alle Hersteller",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -61,85 +82,23 @@
 			"response": []
 		},
 		{
-			"name": "Wrong URL",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhren/list",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Watchshop-1.0",
-						"resource",
-						"uhren",
-						"list"
-					]
+			"name": "falsche URL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Uhren by UUID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=e7ac5010-73cf-4be4-bc47-414af51cd6e2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Watchshop-1.0",
-						"resource",
-						"uhr",
-						"read"
-					],
-					"query": [
-						{
-							"key": "UUID",
-							"value": "e7ac5010-73cf-4be4-bc47-414af51cd6e2"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Hersteller by UUID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/read?UUID=d13664cc-e0c7-43f1-8350-41db822c7872",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Watchshop-1.0",
-						"resource",
-						"hersteller",
-						"read"
-					],
-					"query": [
-						{
-							"key": "UUID",
-							"value": "d13664cc-e0c7-43f1-8350-41db822c7872"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "UhrenUUID out of range",
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -167,7 +126,155 @@
 			"response": []
 		},
 		{
-			"name": "HerstellerUUID out of range",
+			"name": "Uhren by UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=608a1471-d5bb-4ea7-a706-7117faa82582",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"read"
+					],
+					"query": [
+						{
+							"key": "UUID",
+							"value": "608a1471-d5bb-4ea7-a706-7117faa82582"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hersteller by UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/read?UUID=d13664cc-e0c7-43f1-8350-41db822c7872",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"read"
+					],
+					"query": [
+						{
+							"key": "UUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UhrenUUID ungültig",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=e7ac5010-73cf-4be4-bc47-414af51cd6e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"read"
+					],
+					"query": [
+						{
+							"key": "UUID",
+							"value": "e7ac5010-73cf-4be4-bc47-414af51cd6e5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HerstellerUUID ungültig",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -193,7 +300,1860 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "2.1 delete Uhr",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/delete?uuid=608a1471-d5bb-4ea7-a706-7117faa82582",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "608a1471-d5bb-4ea7-a706-7117faa82582"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 delete Uhr nicht gefunden",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/delete?uuid=608a1471-d5bb-4ea7-a706-7117faa82111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "608a1471-d5bb-4ea7-a706-7117faa82111"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ungültige herstellerUUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e05c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ungültige herstellerUUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e05c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leerer herstellerUUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leerer herstellerUUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zu lang material",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl mit viel Reinheitswert",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zu lang material",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl mit viel Reinheitswert",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leerer material",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leerer material",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "preis zu hoch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "1200000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "preis zu hoch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "1200000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "preis zu tief",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "0.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "preis zu tief",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "0.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zu langer modelName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust white gold president bracelette",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zu langer modelName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust white gold president bracelette",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leerer modelName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leerer modelName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Hersteller",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/delete?uuid=b9245a6f-c6ca-46b6-a31b-459d7b440b0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "b9245a6f-c6ca-46b6-a31b-459d7b440b0d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Hersteller not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/delete?uuid=d13664cc-e0c7-43f1-8350-41db822c7875",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7875"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zu lange herkunft",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "Patek Philippe",
+							"type": "default"
+						},
+						{
+							"key": "herkunft",
+							"value": "Geneva fifty four street",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zu lange herkunft",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "Patek Philippe",
+							"type": "default"
+						},
+						{
+							"key": "herkunft",
+							"value": "Geneva fifty four street",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leerer herkunft",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "Patek Philippe",
+							"type": "default"
+						},
+						{
+							"key": "herkunft",
+							"value": "",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leerer herkunft",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "Patek Philippe",
+							"type": "default"
+						},
+						{
+							"key": "herkunft",
+							"value": "",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leerer herstellerName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "",
+							"type": "default"
+						},
+						{
+							"key": "herkunft",
+							"value": "Geneva",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leerer herstellerName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "",
+							"type": "default"
+						},
+						{
+							"key": "herkunft",
+							"value": "Geneva",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zu lange herstellerName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "Patek Philippe new Generation",
+							"type": "default"
+						},
+						{
+							"key": "herkunft",
+							"value": "Geneva",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zu lange herstellerName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "Patek Philippe new Generation",
+							"type": "default"
+						},
+						{
+							"key": "herkunft",
+							"value": "Geneva",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update Hersteller",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						},
+						{
+							"key": "herstellerName",
+							"value": "Rolex",
+							"type": "default"
+						},
+						{
+							"key": "herkunft",
+							"value": "London",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert Hersteller",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "herstellerName",
+							"value": "Patek Philippe",
+							"type": "default"
+						},
+						{
+							"key": "herkunft",
+							"value": "Geneva",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/hersteller/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"hersteller",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.10 update Uhr",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "uhrUUID",
+							"value": "e7ac5010-73cf-4be4-bc47-414af51cd6e2",
+							"type": "default"
+						},
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12500.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.5 insert Uhr",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "modelName",
+							"value": "Datejust",
+							"type": "default"
+						},
+						{
+							"key": "preis",
+							"value": "12000.00",
+							"type": "default"
+						},
+						{
+							"key": "material",
+							"value": "Edelstahl",
+							"type": "default"
+						},
+						{
+							"key": "herstellerUUID",
+							"value": "d13664cc-e0c7-43f1-8350-41db822c7872",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"uhr",
+						"create"
+					]
+				}
+			},
+			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

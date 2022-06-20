@@ -1,142 +1,1303 @@
 {
-	"id": "273e96fc-e03e-485f-950f-a5153e65e0cf",
+	"id": "d1b65a60-41ba-4d7a-a65c-19bf2a3646c0",
 	"name": "Watchshop",
-	"timestamp": "2022-05-23T21:11:22.342Z",
-	"collection_id": "6fdb1db6-afa7-4ff8-8d37-d45ca4968ae1",
+	"timestamp": "2022-06-20T20:24:49.069Z",
+	"collection_id": "0-6fdb1db6-afa7-4ff8-8d37-d45ca4968ae1",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 0,
+	"totalPass": 78,
 	"totalFail": 0,
 	"results": [
 		{
 			"id": "9c6a4caa-2877-4d44-89df-d78a32f2ca8e",
 			"name": "All Uhren",
 			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/list",
-			"time": 10,
+			"time": 37,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
-			"tests": {},
-			"testPassFailCounts": {},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
 			"times": [
-				10
+				37
 			],
 			"allTests": [
-				{}
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
 			]
 		},
 		{
 			"id": "02893f98-2541-4e70-96e9-bae8c1e1d674",
-			"name": "All Hersteller",
+			"name": "Alle Hersteller",
 			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/list",
-			"time": 26,
+			"time": 13,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
-			"tests": {},
-			"testPassFailCounts": {},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
 			"times": [
-				26
+				13
 			],
 			"allTests": [
-				{}
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
 			]
 		},
 		{
 			"id": "88439aae-a7f1-4631-b5fd-8f90acb4751c",
-			"name": "Wrong URL",
-			"url": "http://localhost:8080/Watchshop-1.0/resource/uhren/list",
-			"time": 6,
+			"name": "falsche URL",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=e7ac5010-73cf-4be4-bc47-414af51cd6e5",
+			"time": 15,
 			"responseCode": {
-				"code": 404,
-				"name": "Not Found"
+				"code": 410,
+				"name": "Gone"
 			},
-			"tests": {},
-			"testPassFailCounts": {},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
 			"times": [
-				6
+				15
 			],
 			"allTests": [
-				{}
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
 			]
 		},
 		{
 			"id": "fb51fc0f-6508-4693-bb77-00bddb12bb43",
 			"name": "Uhren by UUID",
-			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=e7ac5010-73cf-4be4-bc47-414af51cd6e2",
-			"time": 8,
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=608a1471-d5bb-4ea7-a706-7117faa82582",
+			"time": 6,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
-			"tests": {},
-			"testPassFailCounts": {},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
 			"times": [
-				8
+				6
 			],
 			"allTests": [
-				{}
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
 			]
 		},
 		{
 			"id": "8a13beb1-0bd0-46b9-9959-42c966de5b26",
 			"name": "Hersteller by UUID",
 			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/read?UUID=d13664cc-e0c7-43f1-8350-41db822c7872",
-			"time": 9,
+			"time": 18,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
-			"tests": {},
-			"testPassFailCounts": {},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
 			"times": [
-				9
+				18
 			],
 			"allTests": [
-				{}
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
 			]
 		},
 		{
 			"id": "b4423fc1-8a6a-4c8b-b416-745b8b9ac5e9",
-			"name": "UhrenUUID out of range",
+			"name": "UhrenUUID ungültig",
 			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=e7ac5010-73cf-4be4-bc47-414af51cd6e5",
-			"time": 27,
+			"time": 14,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
 			},
-			"tests": {},
-			"testPassFailCounts": {},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
 			"times": [
-				27
+				14
 			],
 			"allTests": [
-				{}
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
 			]
 		},
 		{
 			"id": "7caddb31-896c-4ef8-974e-40bc6958ae9c",
-			"name": "HerstellerUUID out of range",
+			"name": "HerstellerUUID ungültig",
 			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/read?UUID=b6ac5010-73cf-4be4-bc47-414af51cd6e2",
-			"time": 20,
+			"time": 7,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
 			},
-			"tests": {},
-			"testPassFailCounts": {},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
 			"times": [
-				20
+				7
 			],
 			"allTests": [
-				{}
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "0c8759d0-155e-4ff4-b5ef-65c79c8e9d16",
+			"name": "2.1 delete Uhr",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/delete?uuid=608a1471-d5bb-4ea7-a706-7117faa82582",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "569ab838-fbe6-4c34-bdbb-a9d6df711fa2",
+			"name": "2.2 delete Uhr nicht gefunden",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/delete?uuid=608a1471-d5bb-4ea7-a706-7117faa82111",
+			"time": 6,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "693992c6-6ae4-46df-8fb1-ca4bb2a685c2",
+			"name": "ungültige herstellerUUID",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+			"time": 41,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				41
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "d161cc2d-1ef4-430a-a26d-82edc00c89ba",
+			"name": "ungültige herstellerUUID",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+			"time": 17,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "47d3f973-c21b-43cf-a8b7-2b36070461d3",
+			"name": "leerer herstellerUUID",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "4b5f2ac2-1416-4fb9-8079-4a932d00e281",
+			"name": "leerer herstellerUUID",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+			"time": 13,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "44771b23-e992-4655-8ac1-781cc4b90713",
+			"name": "zu lang material",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "ce1c21d6-07da-4b78-9e37-168638b98ff6",
+			"name": "zu lang material",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "d9baca8e-329d-423a-946a-02c1c0993f45",
+			"name": "leerer material",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "73642b51-5608-41bf-9b1c-b8c5af41c652",
+			"name": "leerer material",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+			"time": 26,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "1f4ec64b-5139-4eea-91ad-a6cda4846e24",
+			"name": "preis zu hoch",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+			"time": 29,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "4591f13d-3152-4886-824d-07408dc94b4b",
+			"name": "preis zu hoch",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+			"time": 19,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "386a5494-611a-4150-8c04-248c202bcbda",
+			"name": "preis zu tief",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "138f1077-70b8-4fa8-b0bd-85f1dc1242c7",
+			"name": "preis zu tief",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "c0da6894-829a-46dd-b9d2-81d208b8d964",
+			"name": "zu langer modelName",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "c6002d36-9a57-4cd7-b572-5f1e54a71d88",
+			"name": "zu langer modelName",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "0f5821be-6d25-4b35-8350-c197e8ea461d",
+			"name": "leerer modelName",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+			"time": 15,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "00c47280-4679-4b56-a9a8-4b6c6f49709a",
+			"name": "leerer modelName",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+			"time": 13,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "c745aa2c-8086-4277-9b97-90363dda5528",
+			"name": "delete Hersteller",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/delete?uuid=b9245a6f-c6ca-46b6-a31b-459d7b440b0d",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "b79aca5c-555e-466b-9448-1f5597c132ac",
+			"name": "delete Hersteller not found",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/delete?uuid=d13664cc-e0c7-43f1-8350-41db822c7875",
+			"time": 5,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "b08aa8a0-4d95-4d66-b07e-5b3b62b58b8d",
+			"name": "zu lange herkunft",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/create",
+			"time": 12,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "e00bf272-eb1b-4302-a3c3-49b78249e107",
+			"name": "zu lange herkunft",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/update",
+			"time": 12,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "8e30f8d8-981a-4413-b4ed-4eb006b7e176",
+			"name": "leerer herkunft",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/create",
+			"time": 14,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "65fcec3c-1bd5-410e-9757-6cf7ee6cf4d1",
+			"name": "leerer herkunft",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/update",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "48529c3a-df91-4e8c-8c98-646603953a73",
+			"name": "leerer herstellerName",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/create",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "ad2f95e3-0ece-4e13-939d-a5f6e3c15a20",
+			"name": "leerer herstellerName",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/update",
+			"time": 27,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				27
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "8bb15801-0ab5-48bb-b2d6-9e07f2ba64ad",
+			"name": "zu lange herstellerName",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/create",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "8e8084c5-a6eb-4030-b1a6-b06d2b3e5f39",
+			"name": "zu lange herstellerName",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/update",
+			"time": 12,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "2b792296-33c4-41f3-b729-15f281c4a494",
+			"name": "update Hersteller",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/update",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "c2cb4329-da0b-4d45-9214-6817db555ac8",
+			"name": "insert Hersteller",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/hersteller/create",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "400fdf80-0ded-49de-8b40-0dd2115d3513",
+			"name": "2.10 update Uhr",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/update",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "59ed6501-a2a9-4918-8587-51b96963ab8e",
+			"name": "2.5 insert Uhr",
+			"url": "http://localhost:8080/Watchshop-1.0/resource/uhr/create",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"Content-Type header is text/plain": true
+				}
 			]
 		}
 	],
 	"count": 1,
-	"totalTime": 106,
+	"totalTime": 551,
 	"collection": {
 		"requests": [
 			{
@@ -166,6 +1327,134 @@
 			{
 				"id": "7caddb31-896c-4ef8-974e-40bc6958ae9c",
 				"method": "GET"
+			},
+			{
+				"id": "0c8759d0-155e-4ff4-b5ef-65c79c8e9d16",
+				"method": "DELETE"
+			},
+			{
+				"id": "569ab838-fbe6-4c34-bdbb-a9d6df711fa2",
+				"method": "DELETE"
+			},
+			{
+				"id": "693992c6-6ae4-46df-8fb1-ca4bb2a685c2",
+				"method": "POST"
+			},
+			{
+				"id": "d161cc2d-1ef4-430a-a26d-82edc00c89ba",
+				"method": "PUT"
+			},
+			{
+				"id": "47d3f973-c21b-43cf-a8b7-2b36070461d3",
+				"method": "POST"
+			},
+			{
+				"id": "4b5f2ac2-1416-4fb9-8079-4a932d00e281",
+				"method": "PUT"
+			},
+			{
+				"id": "44771b23-e992-4655-8ac1-781cc4b90713",
+				"method": "POST"
+			},
+			{
+				"id": "ce1c21d6-07da-4b78-9e37-168638b98ff6",
+				"method": "PUT"
+			},
+			{
+				"id": "d9baca8e-329d-423a-946a-02c1c0993f45",
+				"method": "POST"
+			},
+			{
+				"id": "73642b51-5608-41bf-9b1c-b8c5af41c652",
+				"method": "PUT"
+			},
+			{
+				"id": "1f4ec64b-5139-4eea-91ad-a6cda4846e24",
+				"method": "POST"
+			},
+			{
+				"id": "4591f13d-3152-4886-824d-07408dc94b4b",
+				"method": "PUT"
+			},
+			{
+				"id": "386a5494-611a-4150-8c04-248c202bcbda",
+				"method": "POST"
+			},
+			{
+				"id": "138f1077-70b8-4fa8-b0bd-85f1dc1242c7",
+				"method": "PUT"
+			},
+			{
+				"id": "c0da6894-829a-46dd-b9d2-81d208b8d964",
+				"method": "POST"
+			},
+			{
+				"id": "c6002d36-9a57-4cd7-b572-5f1e54a71d88",
+				"method": "PUT"
+			},
+			{
+				"id": "0f5821be-6d25-4b35-8350-c197e8ea461d",
+				"method": "POST"
+			},
+			{
+				"id": "00c47280-4679-4b56-a9a8-4b6c6f49709a",
+				"method": "PUT"
+			},
+			{
+				"id": "c745aa2c-8086-4277-9b97-90363dda5528",
+				"method": "DELETE"
+			},
+			{
+				"id": "b79aca5c-555e-466b-9448-1f5597c132ac",
+				"method": "DELETE"
+			},
+			{
+				"id": "b08aa8a0-4d95-4d66-b07e-5b3b62b58b8d",
+				"method": "POST"
+			},
+			{
+				"id": "e00bf272-eb1b-4302-a3c3-49b78249e107",
+				"method": "PUT"
+			},
+			{
+				"id": "8e30f8d8-981a-4413-b4ed-4eb006b7e176",
+				"method": "POST"
+			},
+			{
+				"id": "65fcec3c-1bd5-410e-9757-6cf7ee6cf4d1",
+				"method": "PUT"
+			},
+			{
+				"id": "48529c3a-df91-4e8c-8c98-646603953a73",
+				"method": "POST"
+			},
+			{
+				"id": "ad2f95e3-0ece-4e13-939d-a5f6e3c15a20",
+				"method": "PUT"
+			},
+			{
+				"id": "8bb15801-0ab5-48bb-b2d6-9e07f2ba64ad",
+				"method": "POST"
+			},
+			{
+				"id": "8e8084c5-a6eb-4030-b1a6-b06d2b3e5f39",
+				"method": "PUT"
+			},
+			{
+				"id": "2b792296-33c4-41f3-b729-15f281c4a494",
+				"method": "PUT"
+			},
+			{
+				"id": "c2cb4329-da0b-4d45-9214-6817db555ac8",
+				"method": "POST"
+			},
+			{
+				"id": "400fdf80-0ded-49de-8b40-0dd2115d3513",
+				"method": "PUT"
+			},
+			{
+				"id": "59ed6501-a2a9-4918-8587-51b96963ab8e",
+				"method": "POST"
 			}
 		]
 	}
