@@ -5,9 +5,9 @@
   "material" : "Platin",
   "herstellerUUID" : null
 }, {
-  "uhrUUID" : null,
+  "uhrUUID" : "d13664cc-e0c7-43f1-8350-41db822c7872",
   "modelName" : "Datejust",
   "preis" : 12000.00,
   "material" : "Edelstahl",
-  "herstellerUUID" : "d13664cc-e0c7-43f1-8350-41db822c7872"
+  "herstellerUUID" : null
 } ]

@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 
+
 /**
  * Kontoservice for uhr
  *
@@ -29,10 +30,10 @@ public class UhrService {
      * reads a list of all uhren
      * @return  uhren as JSON
      */
+
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-
     public Response uhrList() {
         List<Uhr> uhrList = DataHandler.readAllUhren();
         return Response
