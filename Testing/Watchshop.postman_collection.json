@@ -147,7 +147,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=608a1471-d5bb-4ea7-a706-7117faa82582",
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/uhr/read?UUID=e7ac5010-73cf-4be4-bc47-414af51cd6e2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -162,7 +162,7 @@
 					"query": [
 						{
 							"key": "UUID",
-							"value": "608a1471-d5bb-4ea7-a706-7117faa82582"
+							"value": "e7ac5010-73cf-4be4-bc47-414af51cd6e2"
 						}
 					]
 				}
@@ -2149,6 +2149,274 @@
 						"Watchshop-1.0",
 						"resource",
 						"uhr",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login falsch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "marco",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "bäume",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout falsch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "marco",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "bäume",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user create falsch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "marco",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "bäume",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/user/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"user",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user lese falsch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "marco",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "bäume",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/user/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"user",
+						"read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user delete falsch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "marco",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "bäume",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Watchshop-1.0/resource/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Watchshop-1.0",
+						"resource",
+						"user",
 						"create"
 					]
 				}
