@@ -5,12 +5,14 @@ import ch.bzz.watchshop.data.DataHandler;
 import ch.bzz.watchshop.model.Hersteller;
 import ch.bzz.watchshop.model.Uhr;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.ws.RequestWrapper;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,6 +31,7 @@ public class HerstellerService {
      * reads a list of all herstellers
      * @return  hersteller as JSON
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -46,6 +49,7 @@ public class HerstellerService {
      *  the key
      * @return hersteller
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -69,6 +73,7 @@ public class HerstellerService {
      * @param hersteller the name of the hersteller
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -91,6 +96,7 @@ public class HerstellerService {
      * @param hersteller the name of the hersteller
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
@@ -119,6 +125,7 @@ public class HerstellerService {
      *  the key
      * @return  Response
      */
+    @RolesAllowed({"admin"})
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)

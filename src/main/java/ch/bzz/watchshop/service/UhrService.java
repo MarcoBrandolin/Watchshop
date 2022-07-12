@@ -4,13 +4,13 @@ package ch.bzz.watchshop.service;
 import ch.bzz.watchshop.data.DataHandler;
 import ch.bzz.watchshop.model.Uhr;
 
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.math.BigDecimal;
+import javax.ws.rs.core.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,7 +30,7 @@ public class UhrService {
      * reads a list of all uhren
      * @return  uhren as JSON
      */
-
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -46,18 +46,21 @@ public class UhrService {
      * reads a uhr identified by the uuid
      * @return uhr
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readUhr(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("UUID") String UUID) {
+            @QueryParam("UUID") String UUID
+    ) {
         int httpStatus = 200;
         Uhr uhr = DataHandler.readUhrByUUID(UUID);
         if (uhr == null) {
             httpStatus = 410;
         }
+
         return Response
                 .status(httpStatus)
                 .entity(uhr)
@@ -69,6 +72,7 @@ public class UhrService {
      * @param herstellerUUID the uuid of the hersteller
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -77,11 +81,13 @@ public class UhrService {
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("herstellerUUID") String herstellerUUID
+
     ) {
 
         uhr.setHerstellerbyUUID(herstellerUUID);
 
         DataHandler.insertUhr(uhr);
+
         return Response
                 .status(200)
                 .entity("")
@@ -93,6 +99,7 @@ public class UhrService {
      * @param herstellerUUID the uuid of the hersteller
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
@@ -101,6 +108,7 @@ public class UhrService {
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("herstellerUUID") String herstellerUUID
+
     ) {
         int httpStatus = 200;
         Uhr alteuhr = DataHandler.readUhrByUUID(uhr.getUhrUUID());
@@ -125,6 +133,7 @@ public class UhrService {
      * @param uhrUUID  the key
      * @return  Response
      */
+    @RolesAllowed({"admin"})
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
